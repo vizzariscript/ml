@@ -11,9 +11,9 @@ module.exports = {
 
     apiOptions.uri = apiConfig.getUrlSearch() + search;
     return request(apiOptions)
-      .then(function (repos) {
+      .then(function (response) {
         var lista = classLista.newLista();
-        lista._results = repos.results.splice(4);
+        lista._results = response.results.splice(4);
         return lista;
       })
       .catch(function (err) { return err; });
@@ -23,8 +23,8 @@ module.exports = {
 
     apiOptions.uri = apiConfig.getUrlItemById() + ml_id;
     return request(apiOptions)
-      .then(function (repos) {
-        return repos;
+      .then(function (response) {
+        return response;
       })
       .catch(function (err) { return err; });
   }
